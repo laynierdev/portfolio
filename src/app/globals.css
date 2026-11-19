@@ -612,12 +612,45 @@ button {
   font-size: 0.92rem;
   color: var(--ink-2);
 }
-.chapters {
+.history {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
   margin-top: clamp(56px, 9vw, 120px);
   padding-bottom: clamp(80px, 12vw, 160px);
+}
+.portrait {
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  margin: 0;
+}
+.portrait__glow {
+  position: absolute;
+  inset: 8% 0 14% 0;
+  background: radial-gradient(60% 60% at 55% 40%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 70%);
+  filter: blur(28px);
+}
+.portrait__img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+}
+.portrait__cap {
+  position: relative;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-3);
+}
+.chapters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
 }
 .chapter {
   padding: 24px 28px 8px 0;
@@ -1001,6 +1034,14 @@ button {
   }
   .cards {
     gap: 28px;
+  }
+  .history {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .portrait {
+    position: relative;
+    top: auto;
+    max-width: 420px;
   }
   .stats,
   .chapters,

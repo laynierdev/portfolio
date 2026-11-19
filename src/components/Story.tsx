@@ -1,9 +1,10 @@
 "use client";
 
 import { animate, motion, useInView, useScroll, useTransform, type MotionValue } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-import { story } from "@/data/content";
+import { profile, story } from "@/data/content";
 
 function Word({ word, range, progress }: { word: string; range: [number, number]; progress: MotionValue<number> }) {
   const opacity = useTransform(progress, range, [0.16, 1]);
@@ -76,22 +77,39 @@ export function Story() {
           ))}
         </dl>
 
-        <ol className="chapters">
-          {story.chapters.map((chapter, index) => (
-            <motion.li
-              className="chapter"
-              key={chapter.year}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-12% 0px" }}
-              transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="chapter__year mono">{chapter.year}</span>
-              <h3 className="chapter__title">{chapter.title}</h3>
-              <p className="chapter__body">{chapter.body}</p>
-            </motion.li>
-          ))}
-        </ol>
+        <div className="history">
+          <figure className="portrait">
+            <div className="portrait__glow" aria-hidden="true" />
+            <Image
+              className="portrait__img"
+              src="/laynier.webp"
+              alt="Portrait of Laynier Piedra, smiling, wearing glasses"
+              width={720}
+              height={720}
+              sizes="(min-width: 960px) 36vw, 80vw"
+            />
+            <figcaption className="portrait__cap mono">
+              <span className="dot" /> {profile.name} · {profile.location}
+            </figcaption>
+          </figure>
+
+          <ol className="chapters">
+            {story.chapters.map((chapter, index) => (
+              <motion.li
+                className="chapter"
+                key={chapter.year}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-12% 0px" }}
+                transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="chapter__year mono">{chapter.year}</span>
+                <h3 className="chapter__title">{chapter.title}</h3>
+                <p className="chapter__body">{chapter.body}</p>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );
