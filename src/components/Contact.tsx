@@ -35,6 +35,9 @@ export function Contact() {
           <button type="button" className="btn btn--ghost" onClick={copy} data-cursor="Copy">
             {copied ? "Copied" : "Copy email"}
           </button>
+          <a className="btn btn--solid" href="/Laynier-Piedra-CV.pdf" download data-cursor="Save">
+            Download CV
+          </a>
           <span className="sr-only" role="status" aria-live="polite">
             {copied ? "Email copied to clipboard" : ""}
           </span>

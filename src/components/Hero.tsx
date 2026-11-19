@@ -47,6 +47,9 @@ export function Hero() {
             <a className="btn btn--ghost" href="#contact" data-cursor="Talk">
               Get in touch
             </a>
+            <a className="btn btn--ghost" href="/Laynier-Piedra-CV.pdf" download data-cursor="Save">
+              Download CV
+            </a>
           </div>
         </div>
       </div>
