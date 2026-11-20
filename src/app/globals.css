@@ -623,6 +623,7 @@ button {
 .portrait {
   position: sticky;
   top: calc(var(--nav-h) + 24px);
+  width: calc(100% - 20px);
   margin: 0;
 }
 .portrait__glow {
@@ -636,8 +637,11 @@ button {
   display: block;
   width: 100%;
   height: auto;
-  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  /* The photo has its own dark studio backdrop: fade every edge so it melts into the page. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 74%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, #000 74%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-composite: intersect;
 }
 .portrait__cap {
   position: relative;
@@ -1041,7 +1045,7 @@ button {
   .portrait {
     position: relative;
     top: auto;
-    max-width: 420px;
+    max-width: 400px;
   }
   .stats,
   .chapters,

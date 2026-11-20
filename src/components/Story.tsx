@@ -83,9 +83,9 @@ export function Story() {
             <Image
               className="portrait__img"
               src="/laynier.webp"
-              alt="Portrait of Laynier Piedra, smiling, wearing glasses"
-              width={720}
-              height={720}
+              alt="Portrait of Laynier Piedra, smiling, wearing glasses and a dark pullover"
+              width={960}
+              height={960}
               sizes="(min-width: 960px) 36vw, 80vw"
             />
             <figcaption className="portrait__cap mono">
